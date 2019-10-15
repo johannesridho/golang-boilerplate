@@ -1,3 +1,19 @@
 syntax = 'proto3';
 
 package user;
+
+service UserService {
+    rpc GetUsers(GetUsersRequest) returns (Users);
+}
+
+message User {
+    string email = 1;
+    string first_name = 2;
+    string last_name = 3;
+}
+
+message Users {
+    repeated User users = 1;
+}
+
+message GetUsersRequest {}
