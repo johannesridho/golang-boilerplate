@@ -28,7 +28,7 @@ func (s *userServer) GetUsers(ctx context.Context, req *userPb.GetUsersRequest) 
 
 	pbUsers := make([]*userPb.User, len(users))
 
-	for i, user := range pbUsers {
+	for i, user := range users {
 		pbUsers[i] = &userPb.User{
 			Email:     user.Email,
 			FirstName: user.FirstName,
