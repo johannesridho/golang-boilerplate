@@ -16,6 +16,17 @@
   ],
   "paths": {},
   "definitions": {
+    "userGetUsersResponse": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/userUser"
+          }
+        }
+      }
+    },
     "userUser": {
       "type": "object",
       "properties": {
@@ -27,17 +38,6 @@
         },
         "last_name": {
           "type": "string"
-        }
-      }
-    },
-    "userUsers": {
-      "type": "object",
-      "properties": {
-        "users": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/userUser"
-          }
         }
       }
     }

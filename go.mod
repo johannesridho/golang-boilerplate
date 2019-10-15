@@ -2,4 +2,7 @@ module golang-ddd-boilerplate
 
 go 1.13
 
-require google.golang.org/grpc v1.24.0 // indirect
+require (
+	github.com/golang/protobuf v1.3.2
+	google.golang.org/grpc v1.24.0
+)

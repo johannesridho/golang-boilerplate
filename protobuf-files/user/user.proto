@@ -3,7 +3,7 @@ syntax = 'proto3';
 package user;
 
 service UserService {
-    rpc GetUsers(GetUsersRequest) returns (Users);
+    rpc GetUsers(GetUsersRequest) returns (GetUsersResponse);
 }
 
 message User {
@@ -12,7 +12,7 @@ message User {
     string last_name = 3;
 }
 
-message Users {
+message GetUsersResponse {
     repeated User users = 1;
 }
 
