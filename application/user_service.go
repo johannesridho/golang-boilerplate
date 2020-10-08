@@ -1,6 +1,6 @@
 package application
 
-import "golang-ddd-boilerplate/domain"
+import "golang-boilerplate/domain"
 
 type userService struct{}
 

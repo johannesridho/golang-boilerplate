@@ -1,8 +1,8 @@
-module golang-ddd-boilerplate
+module golang-boilerplate
 
-go 1.13
+go 1.15
 
 require (
-	github.com/golang/protobuf v1.3.2
-	google.golang.org/grpc v1.24.0
+	github.com/golang/protobuf v1.4.2
+	google.golang.org/grpc v1.32.0
 )
