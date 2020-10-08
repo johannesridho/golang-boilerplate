@@ -2,36 +2,40 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	"golang-ddd-boilerplate/application"
-	grpc2 "golang-ddd-boilerplate/infrastructure/grpc"
-	userPb "golang-ddd-boilerplate/protobuf-files/user"
+	"golang-boilerplate/application"
+	infraGRPC "golang-boilerplate/infrastructure/grpc"
+	userPB "golang-boilerplate/protobuf-files/user"
 )
 
 func main() {
-	startGrpcServer(":8080")
+	err := startGRPCServer(":8080")
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
-func startGrpcServer(address string) error {
+func startGRPCServer(address string) error {
 	lis, err := net.Listen("tcp", address)
 	if err != nil {
 		return err
 	}
 
-	grpcServer := grpc.NewServer()
+	gRPCServer := grpc.NewServer()
 
 	userService := application.NewUserService()
-	userPb.RegisterUserServiceServer(grpcServer, grpc2.NewUserServer(userService))
+	userPB.RegisterUserServiceServer(gRPCServer, infraGRPC.NewUserServer(userService))
 
-	reflection.Register(grpcServer)
+	reflection.Register(gRPCServer)
 
 	fmt.Printf("gRPC server started at %v", address)
 
-	if err := grpcServer.Serve(lis); err != nil {
+	if err := gRPCServer.Serve(lis); err != nil {
 		return err
 	}
 
